@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Box with Hearts and Lines</title>
+  <style>
+    /* Full-screen black background */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff; /* black background */
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* hide overflowing hearts */
+      position: relative;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Curved animated pink lines in background */
+    body::before {
+      content:"";
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: radial-gradient(circle at top left,#ff2d55 0%,transparent 40%),
+                  radial-gradient(circle at bottom right,#ff2d55 0%,transparent 40%);
+      z-index:0;
+      pointer-events:none;
+      mask-image: repeating-linear-gradient(135deg, #ffffff 0 3px, transparent 3px 20px);
+      -webkit-mask-image: repeating-linear-gradient(135deg, #ffffff 0 3px, transparent 3px 20px);
+      opacity: 0.15;
+      animation: waveMove 12s linear infinite;
+      filter: blur(1px);
+    }
+
+    @keyframes waveMove {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(20px) translateY(-10px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+
+    @font-face {
+    font-family: 'Pacifico';
+    src: url('fonts/Pacifico-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    /* Black box with simple pink shadow and increased line spacing */
+    .black-box {
+      background-color: #fffefecb; /* black box */
+      color: #ff2d55; /* white text */
+      padding: 30px 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px #ff2d55; /* simple pink shadow */
+      font-size: 1.5rem;
+      line-height: 1.8; /* increased spacing between lines */
+      max-width: 90%;
+      width: 280px;
+      max-height: 90vh; /* max height relative to viewport */
+      overflow-y: scroll; /* scrollable content */
+      word-wrap: break-word;
+
+      
+
+      /* Hide scrollbar */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE 10+ */
+      position: relative;
+      z-index: 1; /* above background lines and hearts */
+      /* existing styles... */
+      font-family: 'Pacifico', cursive;
+    }
+
+    .black-box::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 400px) {
+      .black-box {
+        font-size: 1.2rem;
+        padding: 20px 15px;
+        max-height: 60vh;
+      }
+    }
+
+    /* Falling hearts */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 32px;
+      color: #ff2d55;
+      opacity: 0.95;
+      animation: fall linear forwards;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .container {
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  align-items: center;    /* center horizontally */
+    position: fixed;          /* keeps it in place */
+  top: 50%;                 /* center vertically */
+  left: 50%;                /* center horizontally */
+  transform: translate(-50%, -50%); /* adjust for exact center */
+  width: 400px;
+  max-width: 90%;
+}
+
+.pink-button {
+  background-color: #ff2d55;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px #ff2d55;
+  margin-top: 20px; /* space between black box and button */
+  font-family: 'Pacifico', cursive; /* same font as black box */
+}
+  </style>
+</head>
+<body>
+  <!-- Falling hearts container -->
+  <div id="heartsContainer"></div>
+  
+
+
+  <!-- Black box -->
+   <div class="container">
+  <div class="black-box">
+    My Name is Taha<br>
+    You can add more lines here.<br>
+    The box will grow automatically.<br>
+    It is scrollable if content is long.<br>
+    Background has curved pink lines and falling hearts!<br>
+    Line spacing is slightly increased for readability.<br>
+    Add as many lines as you like to see scrolling behavior.<br>
+    Example line 8.<br>
+    Example line 9.<br>
+    Example line 10.gfghejfhbdsdjcnsnjfwekdsfmnsvjkfdnsjcknkndsdvkdhjbsdbvjsbvsjbvljsbvdljbvskjdbvjlbhvdslhBChavdbwFLHVFBJW;eviUJBVEWLKwjbveW;VBELwkjbveiJWBEVIWb;eiuvbW;KJBVE;KJKwbv;ieVB;WEIUBV;jiwbve;ijBWVEHBw;vieb;iBVE;Ie
+  </div>
+
+ <!-- Pink button -->
+  <button onclick="window.open('/index.html', '_blank')" class="pink-button">
+    Click to Next Heart
+  </button>
+  </body>
+  <div>
+
+    <audio autoplay loop>
+  <source src="/Happy_birthday_to_you_MIDI(chosic.com).mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+  
+
+  <script>
+    // Generate falling hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+      heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+      document.getElementById('heartsContainer').appendChild(heart);
+      setTimeout(() => heart.remove(), 8000); // remove after animation
+    }
+
+    setInterval(createHeart, 300); // create a new heart every 0.3s
+// Use existing <audio> tag
+const audioElement = document.querySelector('audio');
+function playAudio() {
+  audioElement.play();
+  window.removeEventListener('click', playAudio);
+  window.removeEventListener('touchstart', playAudio);
+}
+window.addEventListener('click', playAudio);
+window.addEventListener('touchstart', playAudio);
+  </script>
+</body>
+</html>

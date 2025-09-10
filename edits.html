@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cutuu's Edits</title>
+
+  <!-- Short Baby Font -->
+  <link href="/fonts/Short Baby.ttf" rel="stylesheet">
+
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Instagram Reels — Demo</title>
+
+  <!-- Short Baby Font -->
+  <link href="/fonts/Short Baby.ttf" rel="stylesheet">
+
+  <style>
+.tap-to-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255,255,255,0.7); /* ہلکی opacity والا white */
+  font-size: 20px;
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 10;
+
+  /* Animation */
+  animation: fadeOut 1.5s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+    :root{--accent:#ff2d55;--bg:#ffffff;--muted:#bdbdbd}
+    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+
+    /* Animated background with glowing cutting curve lines */
+    body::before{
+      content:"";
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:radial-gradient(circle at top left,#ff2d55 0%,transparent 40%),
+                 radial-gradient(circle at bottom right,#ff2d55 0%,transparent 40%);
+      z-index:0;
+      pointer-events:none;
+      mask-image:repeating-linear-gradient(135deg,#ffffff 0 3px,transparent 3px 20px);
+      -webkit-mask-image:repeating-linear-gradient(135deg,#ffffff 0 3px,transparent 3px 20px);
+      opacity:0.25;
+      animation:waveMove 12s linear infinite;
+      filter:blur(1px);
+    }
+    @keyframes waveMove {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(20px) translateY(-10px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+
+    @font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+    /* Falling hearts background */
+    .heart{position:fixed;top:-10px;font-size:38px;color:#ff2d55;opacity:0.95;animation:fall linear forwards;z-index:0;}
+    @keyframes fall{to{transform:translateY(110vh);opacity:0;}}
+
+    /* Scroll container */
+    .reels-wrap{position:relative;z-index:1;height:90vh;width:100%;max-width:420px;margin:0 auto;overflow-y:auto;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:#000;scrollbar-width:none;border:1px solid #ff2d55;}
+    .reels-wrap::-webkit-scrollbar{display:none;}
+    .reel{position:relative;height:90vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;background:#000;border-radius:20px}
+    video{width:100%;height:100%;object-fit:cover;border-radius:20px}
+
+    /* Overlay UI */
+    .overlay{position:absolute;inset:0;pointer-events:none}
+    .left-col{position:absolute;left:16px;bottom:28px;max-width:60%;pointer-events:auto;color:#fff}
+    .right-col{position:absolute;right:12px;bottom:28px;display:flex;flex-direction:column;gap:18px;align-items:center;pointer-events:auto;color:#fff}
+
+    .profile{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .avatar{width:44px;height:44px;border-radius:50%;background-image:url('images/my-profile.jpg');background-size:cover;background-position:center;flex:0 0 44px}
+    .username{font-weight:600}
+    .caption{color:var(--muted);font-size:14px;margin-top:-20px}
+
+    .action{width:56px;height:56px;border-radius:16px;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:12px}
+    .action .icon{font-size:22px;margin-bottom:6px}
+    .action.liked{color:var(--accent)}
+
+    .follow-btn{margin-top:8px;background:linear-gradient(90deg,#ff7a7a,#ff2d55);padding:6px 12px;border-radius:20px;border:none;color:#fff;font-weight:600;cursor:pointer}
+
+    .big-heart{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);pointer-events:none;font-size:110px;opacity:0;color:var(--accent);transition:transform .45s cubic-bezier(.2,.9,.2,1),opacity .45s}
+    .big-heart.show{transform:translate(-50%,-50%) scale(1);opacity:1}
+
+    .top-bar{position:absolute;top:10px;left:12px;right:12px;display:flex;justify-content:space-between;align-items:center;padding:6px 8px;color:#fff}
+    .logo{font-family: 'Short Baby', cursive; font-weight:700; letter-spacing:1px;}
+
+    .modal{position:fixed;left:50%;transform:translateX(-50%);bottom:0;background:#111;padding:12px;border-top-left-radius:12px;border-top-right-radius:12px;max-height:50vh;width:100%;max-width:400px;overflow:auto;display:none;box-shadow:0 -4px 20px rgba(0,0,0,0.6);color:#fff;z-index:2}
+    .modal.show{display:block}
+    .comment{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.03);cursor:pointer}
+
+    .sr-only{position:absolute;left:-9999px}
+
+    /* 📱 Mobile adjustments */
+@media (max-width: 768px) {
+  .reels-wrap {
+    height: 100vh;       /* Full viewport height */
+    width: 100vw;        /* Full viewport width */
+    max-width: 100%;     /* Remove previous max-width */
+    margin: 0;
+    border-radius: 0;    /* Corners no rounding for full screen */
+  }
+  .reel {
+    height: 100vh;       /* Each reel takes full screen height */
+    width: 100vw;        /* Full width */
+    border-radius: 0;
+  }
+  video {
+    height: 100%;        /* Video covers container */
+    width: 100%;
+    border-radius: 0;
+    object-fit: cover;   /* Keep aspect ratio, fill container */
+  }
+    }
+  </style>
+</head>
+<body>
+  <!-- Falling hearts container -->
+  <div id="heartsContainer"></div>
+
+  <div class="reels-wrap" id="reelsWrap">
+    <!-- Reel 1 -->
+    <section class="reel" data-reel-id="1">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel1.mp4" src="videos/reel1.mp4"></video>
+      <div class="tap-to-play">Tap to Play</div>
+      <div class="overlay">
+        <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="" title="Like"><div class="icon">❤</div><div ></div></div>
+         
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 2 -->
+    <section class="reel" data-reel-id="2">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel2.mp4" src="videos/reel2.mp4"></video>
+      <div class="overlay">
+                <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="" title="Like"><div class="icon">❤</div><div ></div></div>
+
+
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 3 -->
+    <section class="reel" data-reel-id="3">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel3.mp4" src="videos/reel3.mp4"></video>
+      <div class="overlay">
+                <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="1" title="Like"><div class="icon">❤</div><div ></div></div>
+
+
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 4 -->
+    <section class="reel" data-reel-id="4">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel4.mp4" src="videos/reel4.mp4"></video>
+      <div class="overlay">
+                <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="56" title="Like"><div class="icon">❤</div><div ></div></div>
+
+
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 5 -->
+    <section class="reel" data-reel-id="5">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel5.mp4" src="videos/reel5.mp4"></video>
+      <div class="overlay">
+                <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="34" title="Like"><div class="icon">❤</div><div ></div></div>
+>
+
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 6 -->
+    <section class="reel" data-reel-id="6">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel6.mp4" src="videos/reel6.mp4"></video>
+      <div class="overlay">
+                <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="78" title="Like"><div class="icon">❤</div><div ></div></div>
+v>
+
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 7 -->
+    <section class="reel" data-reel-id="7">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel7.mp4" src="videos/reel7.mp4"></video>
+      <div class="overlay">
+                <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="90" title="Like"><div class="icon">❤</div><div></div></div>
+   
+
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 8 -->
+    <section class="reel" data-reel-id="8">
+      <video playsinline autoplay loop preload="metadata" data-src="videos/reel8.mp4" src="videos/reel8.mp4"></video>
+      <div class="overlay">
+                <div class="top-bar">
+          <div class="logo">Cutest Princess😘💕</div>
+        </div>
+        <div class="left-col">
+              <div class="caption">#love#couple#birthday</div>
+            </div>
+        <div class="right-col">
+          <div class="action like-btn" data-count="102" title="Like"><div class="icon">❤</div><div ></div></div>
+
+
+        </div>
+        <div class="big-heart">❤</div>
+      </div>
+    </section>
+
+    <!-- Reel 9: Black box with pink button -->
+<section class="reel" data-reel-id="9">
+  <div class="overlay" style="pointer-events:auto; display:flex; justify-content:center; align-items:center;">
+    <button onclick="window.open('/index.html','_blank')" style="
+      background-color:#ff2d55;
+      color:#fff;
+      border:none;
+      padding:20px 40px;
+      border-radius:12px;
+      font-size:1.5rem;
+      cursor:pointer;
+      font-family:'Pacifico', cursive;
+    ">
+      Click to Next Heart
+    </button>
+  </div>
+</section>
+
+  </div>
+
+  <!-- Comments modal -->
+  <div id="commentsModal" class="modal" aria-hidden="true">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <strong>Comments</strong>
+      <button id="closeComments" style="background:none;border:none;color:var(--muted);cursor:pointer">Close</button>
+    </div>
+    <div class="comment">NICE!</div>
+    <div class="comment">I love you ❤</div>
+    <div class="comment"></div>
+  </div>
+
+  <script>
+    const reels = document.querySelectorAll('.reel');
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        const video = entry.target.querySelector('video');
+        if(!video) return;
+        if(entry.intersectionRatio >= 0.5){
+          if(video.readyState < 2){ video.load(); }
+          video.play().catch(()=>{});
+        } else {
+          video.pause();
+        }
+      });
+    },{threshold:[0.5]});
+    reels.forEach(r=>observer.observe(r));
+
+    reels.forEach(reel=>{
+      const video = reel.querySelector('video');
+      const heart = reel.querySelector('.big-heart');
+      let lastTap = 0;
+
+      reel.addEventListener('click', e=>{
+        const now = Date.now();
+        if(now - lastTap < 300){
+          heart.classList.add('show');
+          setTimeout(()=>heart.classList.remove('show'),650);
+          const likeBtn = reel.querySelector('.like-btn');
+          toggleLike(likeBtn,true);
+        } else {
+          if(video.paused) video.play().catch(()=>{}); else video.pause();
+        }
+        lastTap = now;
+      });
+
+      const likeBtn = reel.querySelector('.like-btn');
+      likeBtn.addEventListener('click', e=>{ e.stopPropagation(); toggleLike(likeBtn); });
+
+      const commentBtn = reel.querySelector('.comment-btn');
+      const commentsModal = document.getElementById('commentsModal');
+      commentBtn.addEventListener('click', e=>{
+        e.stopPropagation();
+        commentsModal.classList.add('show');
+        commentsModal.setAttribute('aria-hidden','false');
+      });
+    });
+
+    document.querySelectorAll('.comment').forEach(c=>{
+      c.addEventListener('click', ()=> {
+        const modal = document.getElementById('commentsModal');
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden','true');
+      });
+    });
+
+    function toggleLike(btn,force){
+      const isLiked = btn.classList.contains('liked');
+      const willLike = (typeof force === 'boolean') ? force : !isLiked;
+      const countEl = btn.querySelector('.count');
+      let count = parseInt(btn.dataset.count||0,10);
+      if(willLike && !isLiked){ count++; btn.classList.add('liked'); }
+      else if(!willLike && isLiked){ count = Math.max(0,count-1); btn.classList.remove('liked'); }
+      btn.dataset.count = count; countEl.textContent = count;
+    }
+
+    document.getElementById('closeComments').addEventListener('click', ()=>{
+      const modal = document.getElementById('commentsModal'); modal.classList.remove('show'); modal.setAttribute('aria-hidden','true');
+    });
+
+    // Lazy load videos
+    const lazyObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const video = entry.target.querySelector('video');
+          const src = video.getAttribute('data-src');
+          if(src && !video.src){ video.src = src; }
+          lazyObserver.unobserve(entry.target);
+        }
+      });
+    },{rootMargin:'500px'});
+    reels.forEach(r=>lazyObserver.observe(r));
+
+    // Falling hearts generator
+    function createHeart(){
+      const heart=document.createElement('div');
+      heart.className='heart';
+      heart.textContent='❤';
+      heart.style.left=Math.random()*100+'vw';
+      heart.style.fontSize=(32+Math.random()*22)+'px';
+      heart.style.animationDuration=(3+Math.random()*3)+'s';
+      document.getElementById('heartsContainer').appendChild(heart);
+      setTimeout(()=>heart.remove(),7000);
+    }
+    setInterval(createHeart,200);
+  </script>
+</body>
+</html>
